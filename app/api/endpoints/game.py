@@ -1,7 +1,7 @@
 from typing import List
 
-from fastapi import APIRouter
-from app.schemas.game import GameCreate, GameResponse, GameSummary
+from fastapi import APIRouter, HTTPException
+from app.schemas.game import GameCreate, GameResponse, GameSummary, GameMove, GameMoveHistory
 from app.services.game_service import GameService
 
 router = APIRouter()
@@ -17,3 +17,19 @@ async def new_game(game: GameCreate):
 async def get_player_games(player_id: str):
     games = game_service.get_player_games(player_id)
     return games
+
+
+@router.post("/{game_id}/move", response_model=GameResponse)
+async def make_move(game_id: str, move: GameMove):
+    try:
+        return game_service.make_move(game_id, move)
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+
+
+@router.get("/{game_id}/moves", response_model=List[GameMoveHistory])
+async def get_game_moves(game_id: str):
+    moves = game_service.get_game_moves(game_id)
+    if not moves:
+        raise HTTPException(status_code=404, detail="Game not found")
+    return moves
