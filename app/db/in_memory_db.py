@@ -19,5 +19,8 @@ class InMemoryDB:
         game_ids = self.player_games.get(player_id, [])
         return [self.games[game_id] for game_id in game_ids]
 
+    def get_game(self, game_id: str) -> Game:
+        return self.games.get(game_id)
+
 
 db = InMemoryDB()
