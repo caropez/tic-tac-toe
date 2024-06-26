@@ -1,5 +1,5 @@
 # tic-tac-toe game
-This is a FastAPI-based Noughts and Crosses (Tic-Tac-Toe) game API.
+This is a FastAPI-based Tic-Tac-Toe game API.
 ## Features
 * Create a new game and get a game ID
 * Make moves using x and y coordinates
@@ -16,6 +16,19 @@ This is a FastAPI-based Noughts and Crosses (Tic-Tac-Toe) game API.
 5. Run the application
 
 ## API Endpoints
+### Create a new game
+- **Endpoint:** `POST /game/new`
+- **Description:** Creates a new game and returns the game 'id', the 'board' and the 'current_player'.
+- **Payload:**
+  ```json
+  {
+    "player_id": "string"
+  }
+  
+### Get all games for a player
+- **Endpoint:** `GET /game/player/{player_id}`
+- **Description:** Retrieves all games played by the specified player.
+
 
 ## API Documentation
 
