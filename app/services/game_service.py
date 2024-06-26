@@ -22,6 +22,19 @@ class GameService:
         )
 
     @staticmethod
+    def get_all_games() -> List[GameSummary]:
+        games = db.games
+        return [
+            GameSummary(id=game.id, created_at=game.created_at, winner=game.winner)
+            for game in games.values()
+        ]
+
+    @staticmethod
+    def get_game(game_id: str) -> GameSummary:
+        game = db.games.get(game_id)
+        return GameSummary(id=game.id, created_at=game.created_at, winner=game.winner)
+
+    @staticmethod
     def get_player_games(player_id: str) -> List[GameSummary]:
         games = db.get_player_games(player_id)
         return [

@@ -12,3 +12,4 @@ def test_create_new_game(game_service):
     assert game.id is not None
     assert game.board == [[" " for _ in range(3)] for _ in range(3)]
     assert game.current_player == "X"
+
