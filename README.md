@@ -25,6 +25,16 @@ This is a FastAPI-based Tic-Tac-Toe game API.
     "player_id": "string"
   }
   
+### Make a move
+- **Endpoint:** `POST /game/{game_id}/move`
+- **Description:** Makes a move in the specified game. The computer will automatically make a move.
+- **Payload:**
+  ```json
+  {
+    "x": 0,
+    "y": 0
+  }
+  
 ### Get all games for a player
 - **Endpoint:** `GET /game/player/{player_id}`
 - **Description:** Retrieves all games played by the specified player.
