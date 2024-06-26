@@ -10,7 +10,7 @@ class GameCreate(BaseModel):
 
 class GameSummary(BaseModel):
     id: str
-    winner: str
+    winner: Optional[str]
     created_at: datetime
 
 
