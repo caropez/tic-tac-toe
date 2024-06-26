@@ -28,8 +28,14 @@ This is a FastAPI-based Tic-Tac-Toe game API.
 ### Get all games for a player
 - **Endpoint:** `GET /game/player/{player_id}`
 - **Description:** Retrieves all games played by the specified player.
+ 
+### Get all moves for a game
+- **Endpoint:** `GET /game/{game_id}/move`
+- **Description:** Retrieves all moves made in the specified game.
 
+### Get all games for a player
 
-## API Documentation
+- **Endpoint:** `GET /game/player/{player_id}`
+- **Description:** Retrieves all games played by the specified player, in chronological order.
 
 
